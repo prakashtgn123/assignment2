@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Leap Year and 12 Horary Signs</title>
+    <style>
+        body {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #year-input {
+            margin-top: 10px;
+        }
+
+        #year-result {
+            margin-top: 10px;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 60%;
+            height: 99vh;
+            text-align: center;
+            font-size: 24px;
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: #f8d28a;
+        }
+    .photo-container{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+    }
+
+    #image{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+    <h1>Leap Year and 12 Horary Signs</h1>
+    <input type="number" id="year-input" placeholder="Enter a year" min="0000" max="3000">
+    <div id="year-result"></div>
+    <br>
+    <label id="horary-sign"></label>
+    <br>
+    <div class="photo-container">
+        <img id="image" src="images/default.jpg"></img>
+    </div>
+    </div>
+    <script>
+
+        // Function to determine if a year is a leap year
+        function isLeapYear(year) {
+            return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+        }
+
+        // Function to display the leap year/common year and horary sign
+        function displayYearInfo() {
+            const yearInput = document.getElementById('year-input');
+            const yearResult = document.getElementById('year-result');
+            const year = parseInt(yearInput.value);
+            let image = document.getElementById("image");
+
+            if (isNaN(year)) {
+                yearResult.innerHTML = 'Please enter a valid year.';
+                return;
+            }
+
+            else{
+            let result = '';
+                if (isLeapYear(year)) {
+                    yearResult.innerHTML = result += '<div>Leap Year</div>';
+                }   
+                else {
+                    yearResult.innerHTML = result += '<div>Common Year</div>';
+                }
+            // let to remainder with switch satatement and horary sign 
+                let remainder = year % 12;
+                switch(remainder){
+                    case 0:
+                        document.getElementById("horary-sign").innerHTML = "Monkey";
+                        image.src = "images/monkey.jpeg";
+                        break;
+                    case 1:
+                        document.getElementById("horary-sign").innerHTML = "Cock";
+                        image.src = "images/cock.jpeg";
+                        break;
+                    case 2:
+                        document.getElementById("horary-sign").innerHTML = "Dog";
+                        image.src = "images/dog.jpeg";
+                        break;
+                    case 3:
+                        document.getElementById("horary-sign").innerHTML = "Boar";
+                        image.src = "images/boar.jpeg";
+                        break;
+                    case 4:
+                        document.getElementById("horary-sign").innerHTML = "Rat";
+                        image.src = "images/rat.jpeg";
+                        break;
+                    case 5:
+                        document.getElementById("horary-sign").innerHTML = "Ox";
+                        image.src = "images/ox.jpeg";
+                        break;
+                    case 6:
+                        document.getElementById("horary-sign").innerHTML = "Tiger";
+                        image.src = "images/tiger.jpeg";
+                        break;
+                    case 7:
+                        document.getElementById("horary-sign").innerHTML = "Hare";
+                        image.src = "images/hare.jpeg";
+                        break;
+                    case 8:
+                        document.getElementById("horary-sign").innerHTML = "Dragon";
+                        image.src = "images/dragon.jpeg";
+                        break;
+                    case 9:
+                        document.getElementById("horary-sign").innerHTML = "Serpent";
+                        image.src = "images/serpent.jpeg";
+                        break;
+                    case 10:
+                        document.getElementById("horary-sign").innerHTML = "Horse";
+                        image.src = "images/horse.jpeg";
+                        break;
+                    case 11:
+                        document.getElementById("horary-sign").innerHTML = "Sheep";
+                        image.src = "images/sheep.jpeg";
+                        break;
+                }
+            }
+        }
+        // Add event listener to the input field
+        document.getElementById('year-input').addEventListener('input', displayYearInfo);
+    </script>
+</body>
+
+</html>
